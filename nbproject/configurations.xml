@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="84">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Arquivos de Cabeçalho"
+                   projectFiles="true">
+      <itemPath>Action.h</itemPath>
+      <itemPath>Button.h</itemPath>
+      <itemPath>Component.h</itemPath>
+      <itemPath>FontManager.h</itemPath>
+      <itemPath>Graphics.h</itemPath>
+      <itemPath>GroupButtonControl.h</itemPath>
+      <itemPath>Image.h</itemPath>
+      <itemPath>Label.h</itemPath>
+      <itemPath>Panel.h</itemPath>
+      <itemPath>RadioButton.h</itemPath>
+      <itemPath>RootContainer.h</itemPath>
+      <itemPath>../openmapcad/src/header/StringTokenizer.hpp</itemPath>
+      <itemPath>color.h</itemPath>
+      <itemPath>opengl.h</itemPath>
+      <itemPath>pcglPrimitives.h</itemPath>
+      <itemPath>vec234.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Arquivos de Código-Fonte"
+                   projectFiles="true">
+      <itemPath>Action.cpp</itemPath>
+      <itemPath>Button.cpp</itemPath>
+      <itemPath>Component.cpp</itemPath>
+      <itemPath>FontManager.cpp</itemPath>
+      <itemPath>Graphics.cpp</itemPath>
+      <itemPath>GroupButtonControl.cpp</itemPath>
+      <itemPath>Image.cpp</itemPath>
+      <itemPath>Label.cpp</itemPath>
+      <itemPath>Panel.cpp</itemPath>
+      <itemPath>RadioButton.cpp</itemPath>
+      <itemPath>RootContainer.cpp</itemPath>
+      <itemPath>../openmapcad/src/StringTokenizer.cpp</itemPath>
+      <itemPath>main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Arquivos de Recurso"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Arquivos de Teste"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Arquivos Importantes"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>8</standard>
+        </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerOptionItem>-lGL</linkerOptionItem>
+            <linkerOptionItem>-lGLEW</linkerOptionItem>
+            <linkerOptionItem>-lglfw</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs freetype2`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs ftgl`</linkerOptionItem>
+            <linkerOptionItem>-lpng</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+          <standard>8</standard>
+          <incDir>
+            <pElem>/usr/include/freetype2</pElem>
+            <pElem>/usr/include/FTGL</pElem>
+            <pElem>/usr/include/GL</pElem>
+          </incDir>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerOptionItem>-lGL</linkerOptionItem>
+            <linkerOptionItem>-lGLEW</linkerOptionItem>
+            <linkerOptionItem>-lglfw</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs freetype2`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs ftgl`</linkerOptionItem>
+            <linkerOptionItem>-lfreeimage</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+    </conf>
+  </confs>
+</configurationDescriptor>
