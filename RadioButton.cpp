@@ -37,6 +37,10 @@ void RadioButton::setText(string text) {
     label->setText(text);
 }
 
+void RadioButton::actionExecuted() {
+    setSelected(!isSelected());
+}
+
 void RadioButton::render(Graphics* graphics) {
     int x = getLocation().x;
     int y = getLocation().y;
@@ -47,7 +51,9 @@ void RadioButton::render(Graphics* graphics) {
     int radius = label->getFont()->LineHeight() * 0.7;
     int cy = y + (h - radius) / 2;
     int gap = radius / 2;
-
+    
+    paintBackground(graphics);
+    
     label->setLocation(radius * 2, 0);
     if (isSelected() || isStatePressed()) {
         graphics->setColor(isStatePressed() ? pcglBootstrapGreen : pcglBootstrapBlue);

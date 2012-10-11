@@ -28,9 +28,9 @@ void Button::setAction(Action *action) {
     this->action = action;
 }
 
-void Button::fireAction(Component *c) {
+void Button::actionExecuted() {
     if (action != NULL) {
-        action->executed(c);
+        action->executed(this);
     }
 }
 

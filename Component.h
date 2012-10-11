@@ -61,8 +61,10 @@ public:
     void mouseEntered();
     void mouseExited();
     void mouseMoved(int x, int y);
-    void mousePressed(int x, int y);
-    void mouseReleased(int x, int y);
+    void mousePressed(int button, int x, int y);
+    void mouseReleased(int button, int x, int y);
+    
+    virtual void actionExecuted();
     
     void setAutoDimension(bool autoDimension);
     virtual bool isAutoDimension();

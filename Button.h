@@ -19,7 +19,7 @@ public:
     virtual ~Button();
 
     void setAction(Action *action);
-    void fireAction(Component *c);
+    void actionExecuted();
 
     void setText(string text);
     string getText();

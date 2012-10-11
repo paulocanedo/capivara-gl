@@ -121,6 +121,10 @@ int main(int argc, char** argv) {
     //    label1->setAlign(Component::ComponentAlign::BottomCenter);
     //    label1->setForegroundColor(pcglYellow);
 //        label1->setBackgroundColor(pcglBootstrapBlue);
+    
+    int y = 80;
+    int increase = 30;
+    int gap = 2;
 
     Button* button = new Button();
     button->setLocation(20, 30);
@@ -129,19 +133,22 @@ int main(int argc, char** argv) {
     button->setAction(caction);
     
     RadioButton* rbutton1 = new RadioButton();
-    rbutton1->setLocation(20, 80);
+    rbutton1->setLocation(20, y);
     rbutton1->setDimension(300, 30);
     
+    y += increase + gap;
     RadioButton* rbutton2 = new RadioButton();
-    rbutton2->setLocation(20, 100);
+    rbutton2->setLocation(20, y);
     rbutton2->setDimension(300, 30);
     
+    y += increase + gap;
     RadioButton* rbutton3 = new RadioButton();
-    rbutton3->setLocation(20, 120);
+    rbutton3->setLocation(20, y);
     rbutton3->setDimension(300, 30);
     
+    y += increase + gap;
     RadioButton* rbutton4 = new RadioButton();
-    rbutton4->setLocation(20, 140);
+    rbutton4->setLocation(20, y);
     rbutton4->setDimension(300, 30);
     
     Panel* panel = new Panel();

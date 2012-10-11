@@ -20,6 +20,7 @@ public:
     bool isSelected();
     void setSelected(bool selected);
     void setText(string text);
+    void actionExecuted();
     
     virtual void render(Graphics* graphics);
 private:

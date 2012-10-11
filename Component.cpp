@@ -130,3 +130,34 @@ bool Component::cover(int x, int y) {
     return ((x > location.x && x < (location.x + dimension.w)) &&
             (y > location.y && y < (location.y + dimension.y)));
 }
+
+void Component::mouseEntered() {
+    if (!isStatePressed())
+        paintState = PaintState::Hover;
+}
+
+void Component::mouseExited() {
+    if (!isStatePressed())
+        paintState = PaintState::Normal;
+}
+
+void Component::mouseMoved(int x, int y) {
+
+}
+
+void Component::mousePressed(int button, int x, int y) {
+    if (button == 0) {
+        paintState = PaintState::Pressed;
+    }
+}
+
+void Component::mouseReleased(int button, int x, int y) {
+    if (button == 0) {
+        actionExecuted();
+        paintState = PaintState::Hover;
+    }
+}
+
+void Component::actionExecuted() {
+    
+}
