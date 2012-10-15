@@ -18,6 +18,7 @@ public:
     Button(const Button& orig);
     virtual ~Button();
 
+    string getComponentName();
     void setAction(Action *action);
     void actionExecuted();
 

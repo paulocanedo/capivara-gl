@@ -36,6 +36,12 @@ void display() {
     glClear(GL_COLOR_BUFFER_BIT);
 
     rootc->render();
+    
+    glColor4f(0, 0, 1, 1);
+    drawCoverSuperior(20, 20, 200, 70, 20, 0, true);
+    
+    glColor4f(1, 0, 1, 1);
+    pcglDrawRect(20, 20, 200, 70);
 }
 
 void charCallback(int key, int action) {
@@ -86,6 +92,7 @@ int main(int argc, char** argv) {
         exit(-1);
     }
     
+    glfwSetWindowTitle("Capivara-GL Test");
     cout << "FSAA_SAMPLES: " << glfwGetWindowParam(GLFW_FSAA_SAMPLES) << endl;
 
 //    glEnable(GL_LINE_SMOOTH);
@@ -155,10 +162,10 @@ int main(int argc, char** argv) {
     panel->setDimension(1920 * 4, 1080 * 4);
     panel->add(label1);
     
+    panel->add(rbutton1);
+    panel->add(rbutton2);
+    panel->add(rbutton3);
     rootc->add(panel);
-    rootc->add(rbutton1);
-    rootc->add(rbutton2);
-    rootc->add(rbutton3);
     rootc->add(rbutton4);
     rootc->add(button);
     //-------------------------------------------------------------------------

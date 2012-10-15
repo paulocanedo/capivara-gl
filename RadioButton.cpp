@@ -7,8 +7,6 @@
 
 #include "RadioButton.h"
 
-#include <iostream>
-
 RadioButton::RadioButton() {
     this->selected = false;
     label = new Label();
@@ -23,6 +21,10 @@ RadioButton::RadioButton(const RadioButton& orig) {
 }
 
 RadioButton::~RadioButton() {
+}
+
+string RadioButton::getComponentName() {
+    return "RadioButton";
 }
 
 bool RadioButton::isSelected() {
@@ -52,7 +54,7 @@ void RadioButton::render(Graphics* graphics) {
     int cy = y + (h - radius) / 2;
     int gap = radius / 2;
     
-    paintBackground(graphics);
+//    paintBackground(graphics);
     
     label->setLocation(radius * 2, 0);
     if (isSelected() || isStatePressed()) {

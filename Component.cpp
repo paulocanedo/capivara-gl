@@ -78,6 +78,10 @@ void Component::setBorderColor(vec4 color) {
     this->borderColor = color;
 }
 
+string Component::getComponentName() {
+    return "Component";
+}
+
 void Component::setAutoDimension(bool autoDimension) {
     this->autoDimension = autoDimension;
 }

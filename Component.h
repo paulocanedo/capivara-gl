@@ -60,12 +60,13 @@ public:
     
     void mouseEntered();
     void mouseExited();
-    void mouseMoved(int x, int y);
-    void mousePressed(int button, int x, int y);
-    void mouseReleased(int button, int x, int y);
+    virtual void mousePressed(int button, int x, int y);
+    virtual void mouseReleased(int button, int x, int y);
+    virtual void mouseMoved(int x, int y);
     
     virtual void actionExecuted();
     
+    virtual string getComponentName();
     void setAutoDimension(bool autoDimension);
     virtual bool isAutoDimension();
     PaintState getPaintState();

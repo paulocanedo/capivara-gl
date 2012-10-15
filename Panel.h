@@ -9,6 +9,7 @@
 #define	PANEL_H
 
 #include "Component.h"
+#include <vector>
 
 class Panel : public Component {
 public:
@@ -16,8 +17,13 @@ public:
     Panel(const Panel& orig);
     virtual ~Panel();
     
+    string getComponentName();
     void add(Component* c);
     void remove(Component* c);
+    
+    void mouseMoved(int x, int y);
+    void mousePressed(int button, int x, int y);
+    void mouseReleased(int button, int x, int y);
     
     virtual void render(Graphics* graphics);
 private:

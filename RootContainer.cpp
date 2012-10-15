@@ -27,9 +27,11 @@ void RootContainer::mousePosition(int x, int y) {
 
     for (vector<Component*>::iterator it = container.begin(); it != container.end(); ++it) {
         if ((*it)->cover(x, y)) {
-            (*it)->mouseEntered();
+            if (!(*it)->isStateHover() && !(*it)->isStatePressed())
+                (*it)->mouseEntered();
         } else {
-            (*it)->mouseExited();
+            if ((*it)->isStateHover())
+                (*it)->mouseExited();
         }
 
         (*it)->mouseMoved(x, y);

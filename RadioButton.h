@@ -17,6 +17,7 @@ public:
     RadioButton(const RadioButton& orig);
     virtual ~RadioButton();
     
+    string getComponentName();
     bool isSelected();
     void setSelected(bool selected);
     void setText(string text);

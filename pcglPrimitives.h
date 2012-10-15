@@ -10,6 +10,7 @@
 
 #include <GL/gl.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 #define DEGREES_TO_RADIANS(x) (3.14159265358979323846 * x / 180.0)
 
@@ -91,7 +92,7 @@ extern "C" {
         glDisableClientState(GL_COLOR_ARRAY);
         glEnableClientState(GL_VERTEX_ARRAY);
         glVertexPointer(2, GL_FLOAT, 0, vertices);
-        glDrawArrays(GL_LINES, 0, 16);
+        glDrawArrays(GL_LINES, 0, 8);
         glDisableClientState(GL_VERTEX_ARRAY);
 
         free(vertices);
@@ -151,7 +152,6 @@ extern "C" {
             free(vertices);
             vertices = NULL;
         }
-        glColor4f(0, 0, 0, 1);
     }
 
     static inline void pcglFillRect(float x1, float y1, float x2, float y2) {
@@ -179,31 +179,65 @@ extern "C" {
         _pcglDrawArc(x, y, startAngle, endAngle, w, h, true);
     }
 
-    static inline void drawRoundRect(float x1, float y1, float x2, float y2, float rw, float rh) {
-        pcglDrawRoundRect(x1, y1, x2, y2, rw, rh, false);
-    }
-
-    static inline void fillRoundRect(float x1, float y1, float x2, float y2, float rw, float rh) {
-        pcglDrawRoundRect(x1, y1, x2, y2, rw, rh, true);
-    }
-
-    static inline void fillCoverSuperior(float x1, float y1, float x2, float y2, float rw, float rh) {
-        float b = y1;
-        float t = y2;
+    static inline void drawCoverSuperior(float x1, float y1, float x2, float y2, float rw, float rh, bool filled) {
+        float t = y1;
+        float b = y2;
         float l = x1;
         float r = x2;
 
-        float bi = b + rh;
-        float ti = t - rh;
+        float bi = t + rh;
+        float ti = b - rh;
         float li = l + rw;
         float ri = r - rw;
 
-        pcglFillArc(li, ti, 0, 90, l - li, t - ti); //top left
-        pcglFillArc(ri, ti, 0, 90, r - ri, t - ti); //top right
+        int perVertex = 2;
+        int nvertices = 180 + 0;
+        GLfloat* vertices = (GLfloat*) calloc(nvertices * perVertex, sizeof (GLfloat));
 
-        pcglFillRect(li, ti, ri, t);
-        //    fillTriangle(ri, ti, r, ti, ri, t);
-        //    fillTriangle(li, ti, l, ti, li, t);
+        int i = 0;
+        for (i = 0; i < 90 * perVertex; i += perVertex) { //top right
+            int currentAngle = i / perVertex;
+            float angleRadian = DEGREES_TO_RADIANS(currentAngle);
+            float cosx = cos(angleRadian);
+            float sinx = sin(angleRadian);
+            float height = (t > b) ? (t - b) : (b - t);
+
+            vertices[i + 0] = (GLfloat) (ri + (cosx * (r - ri)));
+            vertices[i + 1] = (GLfloat) (b  - (sinx * (height)));
+        }
+        for (; i < 180 * perVertex; i += perVertex) { //top right
+            int currentAngle = i / perVertex;
+            float angleRadian = DEGREES_TO_RADIANS(currentAngle);
+            float cosx = cos(angleRadian);
+            float sinx = sin(angleRadian);
+            float height = (t > b) ? (t - b) : (b - t);
+
+            vertices[i + 0] = (GLfloat) (l + -(cosx * (l - li)));
+            vertices[i + 1] = (GLfloat) (t + (sinx * (height)));
+        }
+//        vertices[i] = l;
+//        vertices[i+ 1] = b;
+//        vertices[0] = l;
+//        vertices[1] = b;
+//        vertices[i + 0] = ri;
+//        vertices[i + 1] = t;
+//        vertices[i + 2] = li;
+//        vertices[i + 3] = t;
+//        vertices[i + 4] = l;
+//        vertices[i + 5] = b;
+//        vertices[i + 6] = r;
+//        vertices[i + 7] = b;
+
+        //    glDisableClientState(GL_COLOR_ARRAY);
+        glEnableClientState(GL_VERTEX_ARRAY);
+        glVertexPointer(2, GL_FLOAT, 0, vertices);
+        glDrawArrays(filled ? GL_TRIANGLE_FAN : GL_LINE_STRIP, 0, nvertices);
+        //    glDisableClientState(GL_VERTEX_ARRAY);
+
+        if (vertices != NULL) {
+            free(vertices);
+            vertices = NULL;
+        }
     }
 
 

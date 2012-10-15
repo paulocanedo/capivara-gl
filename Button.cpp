@@ -24,6 +24,10 @@ Button::~Button() {
     delete label;
 }
 
+string Button::getComponentName() {
+    return "Button";
+}
+
 void Button::setAction(Action *action) {
     this->action = action;
 }
