@@ -41,7 +41,12 @@ void Button::actionExecuted() {
 void Button::setText(string text) {
     label->setText(text);
 
-    setDimension(label->getDimension());
+    if (isAutoDimension()) {
+        vec2 dim = label->getDimension();
+        dim.w += 20;
+        dim.h += 6;
+        setDimension(dim);
+    }
 }
 
 //void Button::setImage(Image* image) {

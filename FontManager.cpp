@@ -18,7 +18,7 @@ FTFont* FontManager::getFont() {
 
 FontManager::FontManager() {
     this->dfont = new FTGLTextureFont("/usr/share/fonts/truetype/ubuntu-font-family/Ubuntu-R.ttf");
-    this->dfont->FaceSize(18);
+    this->dfont->FaceSize(16);
 }
 
 FontManager::FontManager(const FontManager& orig) {

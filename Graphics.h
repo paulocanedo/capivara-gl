@@ -26,7 +26,7 @@ public:
     Graphics();
     Graphics(const Graphics& orig);
     virtual ~Graphics();
-    
+
     void drawLine(int x1, int y1, int x2, int y2);
     void drawRect(int x1, int y1, int x2, int y2);
     void drawRoundRect(int x1, int y1, int x2, int y2, int h, int w);
@@ -35,7 +35,7 @@ public:
     void drawArc(int cx, int cy, int startAngle, int endAngle);
     void drawString(int x, int y, string text);
     void drawImage(int x, int y, Image* image);
-    
+
     void fillRect(int x1, int y1, int w, int h);
     void fillCircle(int cx, int cy, int r);
     void fillOval(int x1, int y1, int w, int h);
@@ -45,12 +45,16 @@ public:
     void setColor(float r, float g, float b);
     void setColor(float r, float g, float b, float a);
     vec4 getColor();
-    
+
+    void setLineWidth(float lineWidth);
+    float getLineWidth();
+
     void setFont(FTFont *font);
     FTFont* getFont();
 private:
     vec4 color;
     FTFont *font;
+    float lineWidth;
 };
 
 #endif	/* GRAPHICS_H */

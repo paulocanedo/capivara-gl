@@ -9,7 +9,6 @@
 #define	GROUPBUTTONCONTROL_H
 
 #include "RadioButton.h"
-#include <vector>
 
 class GroupButtonControl {
 public:
@@ -21,8 +20,6 @@ public:
     void remove(RadioButton* rbutton);
 private:
     RadioButton* currentButton;
-    vector<RadioButton*> buttons;
-
 };
 
 #endif	/* GROUPBUTTONCONTROL_H */

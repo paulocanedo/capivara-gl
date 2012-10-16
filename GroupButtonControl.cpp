@@ -6,6 +6,8 @@
  */
 
 #include "GroupButtonControl.h"
+#include <iostream>
+
 
 GroupButtonControl::GroupButtonControl() {
 }
@@ -15,4 +17,3 @@ GroupButtonControl::GroupButtonControl(const GroupButtonControl& orig) {
 
 GroupButtonControl::~GroupButtonControl() {
 }
-

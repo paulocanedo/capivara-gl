@@ -6,7 +6,6 @@
  */
 
 #include "RootContainer.h"
-#include <GL/glfw.h>
 
 RootContainer::RootContainer() {
 }

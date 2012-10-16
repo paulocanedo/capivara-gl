@@ -7,14 +7,13 @@
 
 #include "Graphics.h"
 
-#include <iostream>
-
 using namespace std;
 
 Graphics::Graphics() {
     this->color = pcglBlack;
 
     this->font = FontManager::instance().getFont();
+    this->lineWidth = 1.0f;
 }
 
 Graphics::Graphics(const Graphics& orig) {
@@ -117,6 +116,15 @@ void Graphics::drawOval(int x1, int y1, int w, int h) {
 
 void Graphics::fillOval(int x1, int y1, int w, int h) {
     pcglFillArc(x1 + w/2, y1 + h/2, 0, 360, w/2, h/2);
+}
+
+void Graphics::setLineWidth(float lineWidth) {
+    glLineWidth(lineWidth);
+    this->lineWidth = lineWidth;
+}
+
+float Graphics::getLineWidth() {
+    return this->lineWidth;
 }
 
 void Graphics::setFont(FTFont *font) {

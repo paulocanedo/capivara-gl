@@ -6,9 +6,6 @@
  */
 
 #include <GL/glew.h>
-#include "gl3.h"
-#include <GL/glfw.h>
-#include <cstdlib>
 #include <iostream>
 #include <sstream>
 
@@ -19,15 +16,32 @@
 #include "RadioButton.h"
 #include "Panel.h"
 
-using namespace std;
-
 RootContainer* rootc = new RootContainer();
-Label* label1 = new Label();
+Label* label1;
+Label* label2;
+Button* button;
+RadioButton* rbutton1;
+RadioButton* rbutton2;
+RadioButton* rbutton3;
+RadioButton* rbutton4;
+Panel* panel;
+Action* caction;
+Image* image;
 
 class CustomAction : public Action {
 
     void executed(Component *src) {
         label1->setText("Evento disparado.");
+
+        RadioButton* selectedRB = rbutton1->querySelectedRadioButton();
+        if (selectedRB == NULL) {
+            label1->setText("Nenhum botão radio está selecionado.");
+        } else {
+            ostringstream ss;
+            ss << "RadioButton selecionado: " << selectedRB->getText();
+            string text = ss.str();
+            label1->setText(text);
+        }
     }
 };
 
@@ -63,6 +77,90 @@ void mouseButton(int button, int state) {
     rootc->mouseButton(button, state);
 }
 
+void initComponents() {
+    button = new Button();
+    label1 = new Label();
+    label2 = new Label();
+
+    label1->setLocation(20, 0);
+    label2->setLocation(20, 690);
+
+    image = Image::loadImage("/home/paulocanedo-pc/Downloads/firefox11.png");
+    //    label1->setImage(image);
+    //    label1->setDimension(200, 200);
+    //    label1->setAlign(Component::ComponentAlign::TopCenter);
+    //    label1->setAlign(Component::ComponentAlign::MiddleCenter);
+    //    label1->setAlign(Component::ComponentAlign::BottomCenter);
+    //    label1->setForegroundColor(pcglYellow);
+    //        label1->setBackgroundColor(pcglBootstrapBlue);
+
+    int y = 80;
+    int gap = 2;
+
+    button->setLocation(20, 30);
+    //    button->setDimension(300, 30);
+    CustomAction *caction = new CustomAction();
+    button->setAction(caction);
+    button->setText("Button 1");
+
+    rbutton1 = new RadioButton();
+    rbutton1->setLocation(20, y);
+    rbutton1->setText("RadioButton 1");
+
+    y += rbutton1->getDimension().h + gap;
+    rbutton2 = new RadioButton();
+    rbutton2->setLocation(20, y);
+    rbutton2->setText("RadioButton 2");
+
+    y += rbutton1->getDimension().h + gap;
+    rbutton3 = new RadioButton();
+    rbutton3->setLocation(20, y);
+    rbutton3->setText("RadioButton 3");
+
+    y += rbutton1->getDimension().h + gap;
+    rbutton4 = new RadioButton();
+    rbutton4->setLocation(20, y);
+    rbutton4->setText("RadioButton 4");
+
+    rbutton1->setGroupId(1);
+    rbutton2->setGroupId(1);
+    rbutton3->setGroupId(1);
+    rbutton4->setGroupId(1);
+
+    panel = new Panel();
+    panel->setDimension(1920 * 4, 1080 * 4);
+
+    panel->add(label1);
+    panel->add(label2);
+    panel->add(rbutton1);
+    panel->add(rbutton2);
+    panel->add(rbutton3);
+    panel->add(rbutton4);
+    panel->add(button);
+    rootc->add(panel);
+
+    int a, b, c, i, j, k;
+    glfwGetVersion(&a, &b, &c);
+    glfwGetGLVersion(&i, &j, &k);
+
+    ostringstream ss;
+    ss << "GLFW Version: " << a << "." << b << "." << c << " | ";
+    ss << "OpenGL Version: " << i << "." << j << "." << k << " | ";
+    ss << "FSAA_SAMPLES: " << glfwGetWindowParam(GLFW_FSAA_SAMPLES);
+    label2->setText(ss.str());
+}
+
+void deleteComponents() {
+    delete rbutton1;
+    delete rbutton2;
+    delete rbutton3;
+    delete rbutton4;
+    delete panel;
+    delete button;
+    delete caction;
+    delete image;
+}
+
 /*
  * 
  */
@@ -74,35 +172,43 @@ int main(int argc, char** argv) {
     }
 
     glfwOpenWindowHint(GLFW_FSAA_SAMPLES, 4); // 4x antialiasing
+//    glfwOpenWindowHint(GLFW_OPENGL_VERSION_MAJOR, 3);
+//    glfwOpenWindowHint(GLFW_OPENGL_VERSION_MINOR, 1);
+//        glfwOpenWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); //We don't want the old OpenGL
+
     // Open an OpenGL window
-    if (!glfwOpenWindow(1280, 720, 0, 0, 0, 0, 0, 0, GLFW_WINDOW)) {
+    if (!glfwOpenWindow(1280, 720, 0, 0, 0, 0, 32, 0, GLFW_WINDOW)) {
         glfwTerminate();
-        exit(EXIT_FAILURE);
+        return EXIT_FAILURE;
     }
-    
+
+    glewExperimental = GL_TRUE;
     GLenum result = glewInit();
     if (result != GLEW_OK) {
         cerr << "Failed to initialize GLEW: " << result << endl;
-        exit(-1);
+        return EXIT_FAILURE;
     }
-    
-    glfwSetWindowTitle("Capivara-GL Test");
-    cout << "FSAA_SAMPLES: " << glfwGetWindowParam(GLFW_FSAA_SAMPLES) << endl;
 
-//    glEnable(GL_LINE_SMOOTH);
+    glfwSetWindowTitle("Capivara-GL Test");
+
+    //    glEnable(GL_LINE_SMOOTH);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-//    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-//    glLineWidth(1.5f);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+    //    glLineWidth(1.2f);
 
     glfwEnable(GLFW_KEY_REPEAT);
     glfwEnable(GLFW_STICKY_KEYS);
+
+    glEnable(GL_MULTISAMPLE);
+    glDisable(GL_DEPTH);
 
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 
+    initComponents();
     glfwSetKeyCallback(keyCallback);
     glfwSetCharCallback(charCallback);
     glfwSetWindowRefreshCallback(display);
@@ -110,66 +216,6 @@ int main(int argc, char** argv) {
     glfwSetMousePosCallback(mousePosition);
     glfwSetMouseButtonCallback(mouseButton);
     //-------------------------------------------------------------------------
-    //    Label* label1 = new Label();
-    //    label1->setText("Render\npaulo\nterceira linha\nquarta linha\n6alinha");
-//    label1->setLocation(250, 300);
-    
-    Image* image = Image::loadImage("/home/paulocanedo-pc/Downloads/firefox11.png");
-//    label1->setImage(image);
-    //    label1->setDimension(200, 200);
-    //    label1->setAlign(Component::ComponentAlign::TopCenter);
-    //    label1->setAlign(Component::ComponentAlign::MiddleCenter);
-    //    label1->setAlign(Component::ComponentAlign::BottomCenter);
-    //    label1->setForegroundColor(pcglYellow);
-//        label1->setBackgroundColor(pcglBootstrapBlue);
-    
-    int y = 80;
-    int increase = 30;
-    int gap = 2;
-
-    Button* button = new Button();
-    button->setLocation(20, 30);
-    button->setDimension(300, 30);
-    CustomAction *caction = new CustomAction();
-    button->setAction(caction);
-    
-    RadioButton* rbutton1 = new RadioButton();
-    rbutton1->setLocation(20, y);
-//    rbutton1->setDimension(300, 30);
-    
-    y += increase + gap;
-    RadioButton* rbutton2 = new RadioButton();
-    rbutton2->setLocation(20, y);
-//    rbutton2->setDimension(300, 30);
-    
-    y += increase + gap;
-    RadioButton* rbutton3 = new RadioButton();
-    rbutton3->setLocation(20, y);
-//    rbutton3->setDimension(300, 30);
-    
-    y += increase + gap;
-    RadioButton* rbutton4 = new RadioButton();
-    rbutton4->setLocation(20, y);
-    rbutton4->setText("RadioButton 4");
-//    rbutton4->setDimension(300, 30);
-    
-    Panel* panel = new Panel();
-    panel->setDimension(1920 * 4, 1080 * 4);
-    
-    panel->add(label1);
-    panel->add(rbutton1);
-    panel->add(rbutton2);
-    panel->add(rbutton3);
-    panel->add(rbutton4);
-    rootc->add(panel);
-    rootc->add(button);
-    //-------------------------------------------------------------------------
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-    glDisable(GL_DEPTH);
-    glEnable(GL_MULTISAMPLE);
-
     // Main loop
     while (running) {
         display();
@@ -177,7 +223,8 @@ int main(int argc, char** argv) {
 
         running = !glfwGetKey(GLFW_KEY_ESC) && glfwGetWindowParam(GLFW_OPENED);
     }
-    delete image;
+    deleteComponents();
+
     // Close window and terminate GLFW
     glfwTerminate();
     return EXIT_SUCCESS;
@@ -194,7 +241,7 @@ int main(int argc, char** argv) {
  * barra de progresso
  * radiobutton - ok
  * checkbox
- * GroupButtonControl
+ * GroupButtonControl - not necessary for moment ->groupId in RadioButton
  * button - ok
  * togglebutton
  * ComboBox
