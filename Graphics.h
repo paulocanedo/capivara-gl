@@ -42,6 +42,8 @@ public:
     void fillRoundRect(int x1, int y1, int w, int h, int ch, int cw);
 
     void setColor(vec4 color);
+    void setColor(float r, float g, float b);
+    void setColor(float r, float g, float b, float a);
     vec4 getColor();
     
     void setFont(FTFont *font);

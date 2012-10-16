@@ -17,6 +17,7 @@
       <itemPath>RootContainer.h</itemPath>
       <itemPath>../openmapcad/src/header/StringTokenizer.hpp</itemPath>
       <itemPath>color.h</itemPath>
+      <itemPath>gl3.h</itemPath>
       <itemPath>opengl.h</itemPath>
       <itemPath>pcglPrimitives.h</itemPath>
       <itemPath>vec234.h</itemPath>
@@ -110,7 +111,7 @@
             <linkerOptionItem>-lglfw</linkerOptionItem>
             <linkerOptionItem>`pkg-config --libs freetype2`</linkerOptionItem>
             <linkerOptionItem>`pkg-config --libs ftgl`</linkerOptionItem>
-            <linkerOptionItem>-lfreeimage</linkerOptionItem>
+            <linkerOptionItem>-lpng</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>

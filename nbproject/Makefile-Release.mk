@@ -64,7 +64,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-lGL -lGLEW -lglfw `pkg-config --libs freetype2` `pkg-config --libs ftgl` -lfreeimage  
+LDLIBSOPTIONS=-lGL -lGLEW -lglfw `pkg-config --libs freetype2` `pkg-config --libs ftgl` -lpng  
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}

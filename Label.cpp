@@ -18,6 +18,7 @@ Label::Label() {
     this->parent = NULL;
     this->backgroundColor.a = 0;
     this->image = NULL;
+    setAutoDimension(true);
 }
 
 Label::Label(const Label& orig) {

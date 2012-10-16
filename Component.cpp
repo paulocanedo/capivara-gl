@@ -58,8 +58,6 @@ void Component::setDimension(vec2 dimension) {
 void Component::setDimension(int w, int h) {
     this->dimension.w = w;
     this->dimension.h = h;
-
-    this->autoDimension = false;
 }
 
 vec4 Component::getBackgroundColor() {

@@ -22,6 +22,7 @@ public:
     void setSelected(bool selected);
     void setText(string text);
     void actionExecuted();
+    vec2 getCalculatedDimension();
     
     virtual void render(Graphics* graphics);
 private:

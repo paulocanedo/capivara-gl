@@ -191,7 +191,7 @@ extern "C" {
         float ri = r - rw;
 
         int perVertex = 2;
-        int nvertices = 180 + 0;
+        int nvertices = 180 + 1;
         GLfloat* vertices = (GLfloat*) calloc(nvertices * perVertex, sizeof (GLfloat));
 
         int i = 0;
@@ -208,15 +208,15 @@ extern "C" {
         for (; i < 180 * perVertex; i += perVertex) { //top right
             int currentAngle = i / perVertex;
             float angleRadian = DEGREES_TO_RADIANS(currentAngle);
-            float cosx = cos(angleRadian);
+            float cosx = -cos(angleRadian);
             float sinx = sin(angleRadian);
-            float height = (t > b) ? (t - b) : (b - t);
+            float height = b-t;
 
-            vertices[i + 0] = (GLfloat) (l + -(cosx * (l - li)));
-            vertices[i + 1] = (GLfloat) (t + (sinx * (height)));
+            vertices[i + 0] = (GLfloat) (li - (cosx * (li - l)));
+            vertices[i + 1] = (GLfloat) (b  - (sinx * (height)));
         }
-//        vertices[i] = l;
-//        vertices[i+ 1] = b;
+        vertices[i + 0] = l;
+        vertices[i + 1] = b;
 //        vertices[0] = l;
 //        vertices[1] = b;
 //        vertices[i + 0] = ri;

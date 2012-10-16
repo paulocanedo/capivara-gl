@@ -29,6 +29,22 @@ void Graphics::setColor(vec4 color) {
     this->color = color;
 }
 
+void Graphics::setColor(float r, float g, float b) {
+    glColor4f(r, g, b, 1.0);
+    this->color.r = r;
+    this->color.g = g;
+    this->color.b = b;
+    this->color.a = 1.0;
+}
+
+void Graphics::setColor(float r, float g, float b, float a) {
+    glColor4f(r, g, b, a);
+    this->color.r = r;
+    this->color.g = g;
+    this->color.b = b;
+    this->color.a = 1.0;
+}
+
 void Graphics::drawString(int x, int y, string text) {
     int wWidth, wHeight;
     glfwGetWindowSize(&wWidth, &wHeight);

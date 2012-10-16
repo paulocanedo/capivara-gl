@@ -36,12 +36,6 @@ void display() {
     glClear(GL_COLOR_BUFFER_BIT);
 
     rootc->render();
-    
-    glColor4f(0, 0, 1, 1);
-    drawCoverSuperior(20, 20, 200, 70, 20, 0, true);
-    
-    glColor4f(1, 0, 1, 1);
-    pcglDrawRect(20, 20, 200, 70);
 }
 
 void charCallback(int key, int action) {
@@ -141,32 +135,33 @@ int main(int argc, char** argv) {
     
     RadioButton* rbutton1 = new RadioButton();
     rbutton1->setLocation(20, y);
-    rbutton1->setDimension(300, 30);
+//    rbutton1->setDimension(300, 30);
     
     y += increase + gap;
     RadioButton* rbutton2 = new RadioButton();
     rbutton2->setLocation(20, y);
-    rbutton2->setDimension(300, 30);
+//    rbutton2->setDimension(300, 30);
     
     y += increase + gap;
     RadioButton* rbutton3 = new RadioButton();
     rbutton3->setLocation(20, y);
-    rbutton3->setDimension(300, 30);
+//    rbutton3->setDimension(300, 30);
     
     y += increase + gap;
     RadioButton* rbutton4 = new RadioButton();
     rbutton4->setLocation(20, y);
-    rbutton4->setDimension(300, 30);
+    rbutton4->setText("RadioButton 4");
+//    rbutton4->setDimension(300, 30);
     
     Panel* panel = new Panel();
     panel->setDimension(1920 * 4, 1080 * 4);
-    panel->add(label1);
     
+    panel->add(label1);
     panel->add(rbutton1);
     panel->add(rbutton2);
     panel->add(rbutton3);
+    panel->add(rbutton4);
     rootc->add(panel);
-    rootc->add(rbutton4);
     rootc->add(button);
     //-------------------------------------------------------------------------
     glEnable(GL_BLEND);
