@@ -36,11 +36,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Action.o \
+	${OBJECTDIR}/StringTokenizer.o \
 	${OBJECTDIR}/Panel.o \
+	${OBJECTDIR}/CheckBoxButton.o \
 	${OBJECTDIR}/Label.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/Component.o \
-	${OBJECTDIR}/_ext/1782925000/StringTokenizer.o \
 	${OBJECTDIR}/Button.o \
 	${OBJECTDIR}/RadioButton.o \
 	${OBJECTDIR}/GroupButtonControl.o \
@@ -79,10 +80,20 @@ ${OBJECTDIR}/Action.o: Action.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -I/usr/include/freetype2 -I/usr/include/FTGL -I/usr/include/GL `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/Action.o Action.cpp
 
+${OBJECTDIR}/StringTokenizer.o: StringTokenizer.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I/usr/include/freetype2 -I/usr/include/FTGL -I/usr/include/GL `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/StringTokenizer.o StringTokenizer.cpp
+
 ${OBJECTDIR}/Panel.o: Panel.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -I/usr/include/freetype2 -I/usr/include/FTGL -I/usr/include/GL `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/Panel.o Panel.cpp
+
+${OBJECTDIR}/CheckBoxButton.o: CheckBoxButton.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I/usr/include/freetype2 -I/usr/include/FTGL -I/usr/include/GL `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/CheckBoxButton.o CheckBoxButton.cpp
 
 ${OBJECTDIR}/Label.o: Label.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -98,11 +109,6 @@ ${OBJECTDIR}/Component.o: Component.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -I/usr/include/freetype2 -I/usr/include/FTGL -I/usr/include/GL `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/Component.o Component.cpp
-
-${OBJECTDIR}/_ext/1782925000/StringTokenizer.o: ../openmapcad/src/StringTokenizer.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1782925000
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -I/usr/include/freetype2 -I/usr/include/FTGL -I/usr/include/GL `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1782925000/StringTokenizer.o ../openmapcad/src/StringTokenizer.cpp
 
 ${OBJECTDIR}/Button.o: Button.cpp 
 	${MKDIR} -p ${OBJECTDIR}

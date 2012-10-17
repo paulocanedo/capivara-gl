@@ -15,7 +15,7 @@
       <itemPath>Panel.h</itemPath>
       <itemPath>RadioButton.h</itemPath>
       <itemPath>RootContainer.h</itemPath>
-      <itemPath>../openmapcad/src/header/StringTokenizer.hpp</itemPath>
+      <itemPath>StringTokenizer.hpp</itemPath>
       <itemPath>color.h</itemPath>
       <itemPath>gl3.h</itemPath>
       <itemPath>opengl.h</itemPath>
@@ -27,6 +27,8 @@
                    projectFiles="true">
       <itemPath>Action.cpp</itemPath>
       <itemPath>Button.cpp</itemPath>
+      <itemPath>CheckBoxButton.cpp</itemPath>
+      <itemPath>CheckBoxButton.h</itemPath>
       <itemPath>Component.cpp</itemPath>
       <itemPath>FontManager.cpp</itemPath>
       <itemPath>Graphics.cpp</itemPath>
@@ -36,7 +38,7 @@
       <itemPath>Panel.cpp</itemPath>
       <itemPath>RadioButton.cpp</itemPath>
       <itemPath>RootContainer.cpp</itemPath>
-      <itemPath>../openmapcad/src/StringTokenizer.cpp</itemPath>
+      <itemPath>StringTokenizer.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -69,7 +71,6 @@
         <linkerTool>
           <linkerLibItems>
             <linkerOptionItem>-lGL</linkerOptionItem>
-            <linkerOptionItem>-lGLEW</linkerOptionItem>
             <linkerOptionItem>-lglfw</linkerOptionItem>
             <linkerOptionItem>`pkg-config --libs freetype2`</linkerOptionItem>
             <linkerOptionItem>`pkg-config --libs ftgl`</linkerOptionItem>

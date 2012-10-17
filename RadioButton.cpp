@@ -7,6 +7,8 @@
 
 #include "RadioButton.h"
 
+#include <iostream>
+
 vector<RadioButton*> RadioButton::buttons;
 
 RadioButton::RadioButton() {
@@ -72,6 +74,9 @@ string RadioButton::getText() {
 
 void RadioButton::setText(string text) {
     label->setText(text);
+    int radius = label->getFont()->LineHeight() * 0.7;
+
+    label->setLocation(radius * 2, 0);
 
     if (isAutoDimension()) {
         setDimension(getCalculatedDimension());
@@ -92,31 +97,22 @@ vec2 RadioButton::getCalculatedDimension() {
     return dimension;
 }
 
-void RadioButton::render(Graphics* graphics) {
-    int x = getLocation().x;
-    int y = getLocation().y;
-
-    int w = getDimension().w;
-    int h = getDimension().h;
-
-    int radius = label->getFont()->LineHeight() * 0.7;
-    int cy = y + (h - radius) / 2;
-    int gap = radius / 2;
-
-    //    paintBackground(graphics);
-
-    label->setLocation(radius * 2, 0);
-    if (isSelected() || isStatePressed()) {
+void RadioButton::paintButtonIcon(Graphics *graphics, bool selected, bool pressed, bool hover, int x, int y, int maxDiameter) {
+    int diameter = maxDiameter * 0.6;
+    int space = diameter * 0.25;
+    int gap = space * 2;
+    int cy = y + (maxDiameter - diameter) / 2;
+    
+    if (selected || pressed) {
         graphics->setColor(pcglBootstrapBlue);
-        graphics->fillOval(x + gap, cy, radius, radius);
+        graphics->fillOval(x + gap, cy, diameter, diameter);
 
-        if (isSelected() && !isStatePressed()) {
+        if (selected && !pressed) {
             graphics->setColor(0.2, 0.2, 0.2, 0.7);
-            int space = radius / 4;
-            graphics->fillOval(x + gap + space, cy + space, radius - space * 2, radius - space * 2);
+            graphics->fillOval(x + gap + space, cy + space, diameter - space * 2, diameter - space * 2);
         }
     }
-    graphics->setColor(isStateHover() || isSelected() ? pcglBlack : pcglGray);
+    graphics->setColor(hover || selected ? pcglBlack : pcglGray);
 
 //    int count = (int) round(radius / 10.0);
 //    for (int i = 1; i <= count; i++) {
@@ -124,7 +120,19 @@ void RadioButton::render(Graphics* graphics) {
 //    }
 //    float oldLineWidth = graphics->getLineWidth();
 //    graphics->setLineWidth(max(1.0, radius / 10.0));
-    graphics->drawOval(x + gap, cy, radius, radius);
+    graphics->drawOval(x + gap, cy, diameter, diameter);
+}
+
+void RadioButton::render(Graphics* graphics) {
+    int x = getLocation().x;
+    int y = getLocation().y;
+
+    int w = getDimension().w;
+    int h = getDimension().h;
+
+        paintBackground(graphics);
+
+    paintButtonIcon(graphics, isSelected(), isStatePressed(), isStateHover(), x, y, min(w, h));
 //    graphics->setLineWidth(oldLineWidth);
     label->render(graphics);
 }

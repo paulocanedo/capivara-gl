@@ -35,6 +35,7 @@ public:
     void clearGroupSelection();
     static void clearGroupSelection(int groupId);
 
+    virtual void paintButtonIcon(Graphics *graphics, bool selected, bool pressed, bool hover, int x, int cy, int radius);
     virtual void render(Graphics* graphics);
 private:
     bool selected;

@@ -5,7 +5,6 @@
  * Created on 23 de Agosto de 2012, 16:43
  */
 
-#include <GL/glew.h>
 #include <iostream>
 #include <sstream>
 
@@ -15,6 +14,8 @@
 #include "RootContainer.h"
 #include "RadioButton.h"
 #include "Panel.h"
+#include "gl3.h"
+#include "CheckBoxButton.h"
 
 RootContainer* rootc = new RootContainer();
 Label* label1;
@@ -24,6 +25,8 @@ RadioButton* rbutton1;
 RadioButton* rbutton2;
 RadioButton* rbutton3;
 RadioButton* rbutton4;
+CheckBoxButton* cbbutton1;
+CheckBoxButton* cbbutton2;
 Panel* panel;
 Action* caction;
 Image* image;
@@ -126,7 +129,15 @@ void initComponents() {
     rbutton2->setGroupId(1);
     rbutton3->setGroupId(1);
     rbutton4->setGroupId(1);
-
+    
+    cbbutton1 = new CheckBoxButton();
+    cbbutton1->setText("CheckBox 1");
+    cbbutton1->setLocation(200, 80);
+    
+    cbbutton2 = new CheckBoxButton();
+    cbbutton2->setText("CheckBox 2");
+    cbbutton2->setLocation(200, 105);
+    
     panel = new Panel();
     panel->setDimension(1920 * 4, 1080 * 4);
 
@@ -136,6 +147,8 @@ void initComponents() {
     panel->add(rbutton2);
     panel->add(rbutton3);
     panel->add(rbutton4);
+    panel->add(cbbutton1);
+    panel->add(cbbutton2);
     panel->add(button);
     rootc->add(panel);
 
@@ -155,6 +168,8 @@ void deleteComponents() {
     delete rbutton2;
     delete rbutton3;
     delete rbutton4;
+    delete cbbutton1;
+    delete cbbutton2;
     delete panel;
     delete button;
     delete caction;
@@ -182,26 +197,19 @@ int main(int argc, char** argv) {
         return EXIT_FAILURE;
     }
 
-    glewExperimental = GL_TRUE;
-    GLenum result = glewInit();
-    if (result != GLEW_OK) {
-        cerr << "Failed to initialize GLEW: " << result << endl;
-        return EXIT_FAILURE;
-    }
-
     glfwSetWindowTitle("Capivara-GL Test");
 
     //    glEnable(GL_LINE_SMOOTH);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+//    glEnable(GL_BLEND);
+//    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+//    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
     //    glLineWidth(1.2f);
 
     glfwEnable(GLFW_KEY_REPEAT);
     glfwEnable(GLFW_STICKY_KEYS);
 
     glEnable(GL_MULTISAMPLE);
-    glDisable(GL_DEPTH);
+    glDisable(GL_DEPTH_TEST);
 
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
@@ -240,7 +248,7 @@ int main(int argc, char** argv) {
  * Bindings de posicao
  * barra de progresso
  * radiobutton - ok
- * checkbox
+ * checkbox - ok
  * GroupButtonControl - not necessary for moment ->groupId in RadioButton
  * button - ok
  * togglebutton
