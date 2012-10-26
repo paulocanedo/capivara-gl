@@ -24,12 +24,29 @@ string Panel::getComponentName() {
 }
 
 void Panel::add(Component* c) {
-    components.push_back(c);
     c->setParent(this);
+    
+    ivec2 loc = nextLocation();
+//    c->setLocation(loc.x, 0);
+    c->setLocation(0, loc.y);
+    
+    components.push_back(c);
 }
 
 void Panel::remove(Component* c) {
 
+}
+
+ivec2 Panel::nextLocation() {
+    int x = 0, y = 0;
+    for (vector<Component*>::iterator it = components.begin(); it != components.end(); ++it) {
+        vec2 loc = (*it)->getLocation();
+        vec2 dim = (*it)->getDimension();
+        
+        x += dim.w + 1;
+        y += dim.h + 1;
+    }
+    return {{x,y}};
 }
 
 void Panel::mouseMoved(int x, int y) {
@@ -91,28 +108,6 @@ void Panel::mouseReleased(int button, int x, int y) {
             (*it)->setPaintState(Component::PaintState::Normal);
         }
     }
-}
-
-ivec2 Panel::relativePos(int x, int y) {
-    if (parent != NULL) {
-        Panel* panel = dynamic_cast<Panel*> (parent);
-        if (panel != NULL) {
-            vec2 loc = panel->getLocation();
-            x += loc.x;
-            y += loc.y;
-        }
-        //        parent
-    }
-    vec2 loc = getLocation();
-    x += loc.x;
-    y += loc.y;
-
-    return
-    {
-        {
-            x, y
-        }
-    };
 }
 
 vector<Component*> Panel::getComponents() {

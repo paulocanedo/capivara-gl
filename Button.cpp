@@ -49,9 +49,9 @@ void Button::setText(string text) {
     }
 }
 
-//void Button::setImage(Image* image) {
-//    label->setImage(image);
-//}
+void Button::setImage(Image* image) {
+    label->setImage(image);
+}
 
 string Button::getText() {
     return label->getText();
@@ -81,11 +81,11 @@ void Button::paintBackground(Graphics* graphics) {
         } else {
             graphics->setColor(getBackgroundColor());
         }
-        if (cornerType == 1) {
+        
+        if (cornerType == 1) 
             graphics->fillRect(location.x, location.y, dimension.w, dimension.h);
-        } else {
+        else
             graphics->fillRoundRect(location.x, location.y, dimension.w, dimension.h, dimension.h / 4, dimension.h / 4);
-        }
     }
 }
 

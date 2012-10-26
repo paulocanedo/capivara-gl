@@ -105,6 +105,10 @@ void Graphics::fillRect(int x1, int y1, int w, int h) {
     pcglFillRect(x1, y1, x1 + w, y1 + h);
 }
 
+void Graphics::drawLine(int x1, int y1, int x2, int y2) {
+    pcglDrawLine(x1, y1, x2, y2);
+}
+
 void Graphics::drawRect(int x1, int y1, int w, int h) {
     pcglDrawRect(x1, y1, x1 + w, y1 + h);
 }

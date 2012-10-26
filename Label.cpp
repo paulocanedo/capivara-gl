@@ -18,6 +18,7 @@ Label::Label() {
     this->parent = NULL;
     this->backgroundColor.a = 0;
     this->image = NULL;
+    this->underlined = false;
     setAutoDimension(true);
 }
 
@@ -80,6 +81,10 @@ void Label::setAlign(Component::ComponentAlign align) {
     this->align = align;
 }
 
+void Label::setUnderline(bool underlined) {
+    this->underlined = underlined;
+}
+
 vec4 Label::getForegroundColor() {
     return foregroundColor;
 }
@@ -89,16 +94,16 @@ void Label::setForegroundColor(vec4 color) {
 }
 
 vec2 Label::getCalculatedDimension() {
-    int nLines = numberOfLines();
-    float height = font->LineHeight() * nLines;
+    float width = 0, height = 0;
 
-    float width = 0;
     StringTokenizer* st = new StringTokenizer(this->getText());
     while (!st->isFinished()) {
         string s = st->nextElement('\n');
 
         float w = font->Advance(s.c_str());
+        float h = font->LineHeight();
         width = max(width, w);
+        height += h;
         if (image) {
             width = max((int) width, image->getWidth());
             height = max((int) height, image->getHeight());
@@ -116,7 +121,7 @@ vec2 Label::getCalculatedDimension() {
 
 void Label::render(Graphics* graphics) {
     paintBackground(graphics);
-    
+
     float hs = graphics->getFont()->LineHeight();
     int nLines = numberOfLines();
 
@@ -127,9 +132,9 @@ void Label::render(Graphics* graphics) {
     int y = location.y;
     int w = dimension.w;
     int h = dimension.h;
-    
+
     int dx, dy = 0;
-    if(parent != NULL) {
+    if (parent != NULL) {
         dx = parent->getLocation().x;
         dy = parent->getLocation().y;
     }
@@ -174,7 +179,13 @@ void Label::render(Graphics* graphics) {
             graphics->drawImage(x, y, image);
 
         graphics->setColor(this->foregroundColor);
-        graphics->drawString(x + px, y + py, s);
+        graphics->drawString(x + px, y + py + font->Descender(), s);
+
+        if (underlined) {
+            graphics->setColor(pcglBlack);
+            int ly = y + py + font->LineHeight();
+            graphics->drawLine(x + px, ly, x + px + getCalculatedDimension().w, ly);
+        }
     }
     delete st;
 }

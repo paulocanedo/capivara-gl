@@ -55,7 +55,7 @@ extern "C" {
         pcglDrawArc(x, y, 0, 360, r, r);
     }
 
-    static inline void drawLine(float x1, float y1, float x2, float y2) {
+    static inline void pcglDrawLine(float x1, float y1, float x2, float y2) {
         GLfloat* vertices = (GLfloat*) calloc(4, sizeof (GLfloat));
         vertices[0] = x1;
         vertices[1] = y1;

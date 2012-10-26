@@ -42,10 +42,12 @@ public:
     Image* getImage();
     ComponentAlign getAlign();
     void setAlign(ComponentAlign align);
+    void setUnderline(bool underlined);
     
     virtual void render(Graphics* graphics);
 protected:
     vec2 getCalculatedDimension();
+    bool underlined;
 };
 
 #endif	/* LABEL_H */

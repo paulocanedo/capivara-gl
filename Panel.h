@@ -21,11 +21,11 @@ public:
     void add(Component* c);
     void remove(Component* c);
     vector<Component*> getComponents();
+    ivec2 nextLocation();
     
     void mouseMoved(int x, int y);
     void mousePressed(int button, int x, int y);
     void mouseReleased(int button, int x, int y);
-    ivec2 relativePos(int x, int y);
     
     virtual void render(Graphics* graphics);
 private:

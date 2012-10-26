@@ -83,6 +83,15 @@ void mouseButton(int button, int state) {
 }
 
 void initComponents() {
+    int a, b, c, i, j, k;
+    glfwGetVersion(&a, &b, &c);
+    glfwGetGLVersion(&i, &j, &k);
+
+    ostringstream ss;
+    ss << "GLFW Version: " << a << "." << b << "." << c << " | ";
+    ss << "OpenGL Version: " << i << "." << j << "." << k << " | ";
+    ss << "FSAA_SAMPLES: " << glfwGetWindowParam(GLFW_FSAA_SAMPLES);
+
     button = new Button();
     label1 = new Label();
     label2 = new Label();
@@ -90,6 +99,11 @@ void initComponents() {
 
     label1->setLocation(20, 0);
     label2->setLocation(20, 690);
+    label1->setText("0");
+//    label2->setAutoDimension(false);
+    label2->setDimension(400, 200);
+    label2->setAlign(Label::MiddleCenter);
+    label2->setText(ss.str());
 
     image = Image::loadImage("/home/paulocanedo/Pictures/netbeans.png");
     //    label1->setImage(image);
@@ -104,7 +118,8 @@ void initComponents() {
     int gap = 2;
 
     button->setLocation(20, 30);
-    //    button->setDimension(300, 30);
+//    button->setAutoDimension(false);
+//    button->setDimension(300, 80);
     CustomAction *caction = new CustomAction();
     button->setAction(caction);
     button->setText("Button 1");
@@ -127,7 +142,7 @@ void initComponents() {
     rbutton4 = new RadioButton();
     rbutton4->setLocation(20, y);
     rbutton4->setText("RadioButton 4");
-    
+
     y += rbutton1->getDimension().h + gap;
     rbutton5 = new RadioButton();
     rbutton5->setLocation(0, 0);
@@ -164,16 +179,6 @@ void initComponents() {
     panel->add(button);
     panel->add(ipanel1);
     rootc->add(panel);
-
-    int a, b, c, i, j, k;
-    glfwGetVersion(&a, &b, &c);
-    glfwGetGLVersion(&i, &j, &k);
-
-    ostringstream ss;
-    ss << "GLFW Version: " << a << "." << b << "." << c << " | ";
-    ss << "OpenGL Version: " << i << "." << j << "." << k << " | ";
-    ss << "FSAA_SAMPLES: " << glfwGetWindowParam(GLFW_FSAA_SAMPLES);
-    label2->setText(ss.str());
 }
 
 void deleteComponents() {
@@ -214,11 +219,11 @@ int main(int argc, char** argv) {
 
     glfwSetWindowTitle("Capivara-GL Test");
 
-//    glEnable(GL_LINE_SMOOTH);
-//    glEnable(GL_BLEND);
-//    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-//    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-//    glLineWidth(1.5f);
+    //    glEnable(GL_LINE_SMOOTH);
+    //    glEnable(GL_BLEND);
+    //    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    //    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+    //    glLineWidth(1.5f);
 
     glfwEnable(GLFW_KEY_REPEAT);
     glfwEnable(GLFW_STICKY_KEYS);

@@ -124,8 +124,9 @@ void RadioButton::render(Graphics* graphics) {
     int w = getDimension().w;
     int h = getDimension().h;
 
-//    paintBackground(graphics);
+    paintBackground(graphics);
 
     paintButtonIcon(graphics, isSelected(), isStatePressed(), isStateHover(), x, y, min(w, h));
+    label->setDimension(label->getDimension().x, h);
     label->render(graphics);
 }
