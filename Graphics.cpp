@@ -14,6 +14,9 @@ Graphics::Graphics() {
 
     this->font = FontManager::instance().getFont();
     this->lineWidth = 1.0f;
+    
+    this->offset.x = 0;
+    this->offset.y = 0;
 }
 
 Graphics::Graphics(const Graphics& orig) {
@@ -54,7 +57,7 @@ void Graphics::drawString(int x, int y, string text) {
     glOrtho(0, wWidth, 0, wHeight, -1, 1);
 
     if (!font->Error()) {
-        font->Render(text.c_str(), -1, FTPoint(x, y, 0), FTPoint(), FTGL::RENDER_ALL);
+        font->Render(text.c_str(), -1, FTPoint(x + this->offset.x, y - this->offset.y, 0), FTPoint(), FTGL::RENDER_ALL);
     } else {
         throw 0;
     }
@@ -133,4 +136,13 @@ void Graphics::setFont(FTFont *font) {
 
 FTFont* Graphics::getFont() {
     return this->font;
+}
+
+void Graphics::setOffset(int x, int y) {
+    glTranslatef(-(this->offset.x), -(this->offset.y), 0); //restore offset 0,0
+    
+    this->offset.x = x;
+    this->offset.y = y;
+    
+    glTranslatef(this->offset.x, this->offset.y, 0); //make offset x, y
 }

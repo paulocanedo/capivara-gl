@@ -27,6 +27,10 @@ Label::Label(const Label& orig) {
 Label::~Label() {
 }
 
+string Label::getComponentName() {
+    return "Label";
+}
+
 int Label::numberOfLines() {
     StringTokenizer* st = new StringTokenizer(this->getText());
 

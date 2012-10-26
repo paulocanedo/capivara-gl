@@ -9,7 +9,7 @@
 #define	PCGL_LABEL_H
 
 #include <string>
-#include "../openmapcad/src/header/StringTokenizer.hpp"
+#include "StringTokenizer.hpp"
 
 #include "Image.h"
 #include "Component.h"
@@ -27,6 +27,8 @@ public:
     Label();
     Label(const Label& orig);
     virtual ~Label();
+    
+    virtual string getComponentName();
     
     int numberOfLines();
 

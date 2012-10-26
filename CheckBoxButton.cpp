@@ -16,6 +16,10 @@ CheckBoxButton::CheckBoxButton(const CheckBoxButton& orig) {
 CheckBoxButton::~CheckBoxButton() {
 }
 
+string CheckBoxButton::getComponentName() {
+    return "CheckBoxButton";
+}
+
 void CheckBoxButton::paintButtonIcon(Graphics *graphics, bool selected, bool pressed, bool hover, int x, int y, int maxDiameter) {
     int diameter = maxDiameter * 0.6;
     int space = diameter * 0.25;

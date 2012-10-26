@@ -25,11 +25,13 @@ RadioButton* rbutton1;
 RadioButton* rbutton2;
 RadioButton* rbutton3;
 RadioButton* rbutton4;
+RadioButton* rbutton5;
 CheckBoxButton* cbbutton1;
 CheckBoxButton* cbbutton2;
 Panel* panel;
 Action* caction;
 Image* image;
+Panel* ipanel1;
 
 class CustomAction : public Action {
 
@@ -84,11 +86,12 @@ void initComponents() {
     button = new Button();
     label1 = new Label();
     label2 = new Label();
+    ipanel1 = new Panel();
 
     label1->setLocation(20, 0);
     label2->setLocation(20, 690);
 
-    image = Image::loadImage("/home/paulocanedo-pc/Downloads/firefox11.png");
+    image = Image::loadImage("/home/paulocanedo/Pictures/netbeans.png");
     //    label1->setImage(image);
     //    label1->setDimension(200, 200);
     //    label1->setAlign(Component::ComponentAlign::TopCenter);
@@ -124,22 +127,31 @@ void initComponents() {
     rbutton4 = new RadioButton();
     rbutton4->setLocation(20, y);
     rbutton4->setText("RadioButton 4");
+    
+    y += rbutton1->getDimension().h + gap;
+    rbutton5 = new RadioButton();
+    rbutton5->setLocation(0, 0);
+    rbutton5->setText("RadioButton 5");
 
     rbutton1->setGroupId(1);
     rbutton2->setGroupId(1);
     rbutton3->setGroupId(1);
     rbutton4->setGroupId(1);
-    
+
     cbbutton1 = new CheckBoxButton();
     cbbutton1->setText("CheckBox 1");
     cbbutton1->setLocation(200, 80);
-    
+
     cbbutton2 = new CheckBoxButton();
     cbbutton2->setText("CheckBox 2");
     cbbutton2->setLocation(200, 105);
-    
+
     panel = new Panel();
     panel->setDimension(1920 * 4, 1080 * 4);
+    ipanel1->setLocation(100, 300);
+    ipanel1->setDimension(500, 300);
+    ipanel1->setBackgroundColor(pcglLightGray);
+    ipanel1->add(rbutton5);
 
     panel->add(label1);
     panel->add(label2);
@@ -150,6 +162,7 @@ void initComponents() {
     panel->add(cbbutton1);
     panel->add(cbbutton2);
     panel->add(button);
+    panel->add(ipanel1);
     rootc->add(panel);
 
     int a, b, c, i, j, k;
@@ -168,12 +181,14 @@ void deleteComponents() {
     delete rbutton2;
     delete rbutton3;
     delete rbutton4;
+    delete rbutton5;
     delete cbbutton1;
     delete cbbutton2;
     delete panel;
     delete button;
     delete caction;
     delete image;
+    delete ipanel1;
 }
 
 /*
@@ -187,9 +202,9 @@ int main(int argc, char** argv) {
     }
 
     glfwOpenWindowHint(GLFW_FSAA_SAMPLES, 4); // 4x antialiasing
-//    glfwOpenWindowHint(GLFW_OPENGL_VERSION_MAJOR, 3);
-//    glfwOpenWindowHint(GLFW_OPENGL_VERSION_MINOR, 1);
-//        glfwOpenWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); //We don't want the old OpenGL
+    //    glfwOpenWindowHint(GLFW_OPENGL_VERSION_MAJOR, 3);
+    //    glfwOpenWindowHint(GLFW_OPENGL_VERSION_MINOR, 1);
+    //        glfwOpenWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); //We don't want the old OpenGL
 
     // Open an OpenGL window
     if (!glfwOpenWindow(1280, 720, 0, 0, 0, 0, 32, 0, GLFW_WINDOW)) {
@@ -199,11 +214,11 @@ int main(int argc, char** argv) {
 
     glfwSetWindowTitle("Capivara-GL Test");
 
-    //    glEnable(GL_LINE_SMOOTH);
+//    glEnable(GL_LINE_SMOOTH);
 //    glEnable(GL_BLEND);
 //    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 //    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
-    //    glLineWidth(1.2f);
+//    glLineWidth(1.5f);
 
     glfwEnable(GLFW_KEY_REPEAT);
     glfwEnable(GLFW_STICKY_KEYS);

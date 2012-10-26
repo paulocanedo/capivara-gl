@@ -67,6 +67,8 @@ void Button::render(Graphics* graphics) {
 }
 
 void Button::paintBackground(Graphics* graphics) {
+    int cornerType = 1;
+
     if (getBackgroundColor().a != 0) {
         vec2 location = getLocation();
         vec2 dimension = getDimension();
@@ -79,16 +81,25 @@ void Button::paintBackground(Graphics* graphics) {
         } else {
             graphics->setColor(getBackgroundColor());
         }
-        graphics->fillRoundRect(location.x, location.y, dimension.w, dimension.h, dimension.h / 4, dimension.h / 4);
+        if (cornerType == 1) {
+            graphics->fillRect(location.x, location.y, dimension.w, dimension.h);
+        } else {
+            graphics->fillRoundRect(location.x, location.y, dimension.w, dimension.h, dimension.h / 4, dimension.h / 4);
+        }
     }
 }
 
 void Button::paintBorder(Graphics* graphics) {
+    int cornerType = 1;
+
     int x = getLocation().x;
     int y = getLocation().y;
     int w = getDimension().w;
     int h = getDimension().h;
 
     graphics->setColor(getBorderColor());
-    graphics->drawRoundRect(x, y, w, h, h / 4, h / 4);
+    if (cornerType == 1)
+        graphics->drawRect(x, y, w, h);
+    else
+        graphics->drawRoundRect(x, y, w, h, h / 4, h / 4);
 }

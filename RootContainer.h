@@ -9,7 +9,7 @@
 #define	ROOTCONTAINER_H
 
 #include <vector>
-#include "Component.h"
+#include "Panel.h"
 
 using namespace std;
 
@@ -19,8 +19,8 @@ public:
     RootContainer(const RootContainer& orig);
     virtual ~RootContainer();
     
-    void add(Component* c);
-    void remove(Component* c);
+    void add(Panel* c);
+    void remove(Panel* c);
     
     void mousePosition(int x, int y);
     void mouseButton(int button, int state);
@@ -30,7 +30,7 @@ public:
     bool isHoverComponent(Component *c, int x, int y);
 private:
     Graphics graphics;
-    vector<Component*> container;
+    vector<Panel*> container;
     
     vec2 mouseLocation;
 };

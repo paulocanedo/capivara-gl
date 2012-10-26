@@ -16,7 +16,7 @@ RootContainer::RootContainer(const RootContainer& orig) {
 RootContainer::~RootContainer() {
 }
 
-void RootContainer::add(Component* c) {
+void RootContainer::add(Panel* c) {
     container.push_back(c);
 }
 
@@ -24,7 +24,7 @@ void RootContainer::mousePosition(int x, int y) {
     this->mouseLocation.x = x;
     this->mouseLocation.y = y;
 
-    for (vector<Component*>::iterator it = container.begin(); it != container.end(); ++it) {
+    for (vector<Panel*>::iterator it = container.begin(); it != container.end(); ++it) {
         if ((*it)->cover(x, y)) {
             if (!(*it)->isStateHover() && !(*it)->isStatePressed())
                 (*it)->mouseEntered();
@@ -41,7 +41,7 @@ void RootContainer::mouseButton(int button, int state) {
     int x, y;
     glfwGetMousePos(&x, &y);
 
-    for (vector<Component*>::iterator it = container.begin(); it != container.end(); ++it) {
+    for (vector<Panel*>::iterator it = container.begin(); it != container.end(); ++it) {
         if ((*it)->cover(x, y)) {
             if (state == GLFW_PRESS) {
                 (*it)->mousePressed(button, x, y);
@@ -55,7 +55,7 @@ void RootContainer::mouseButton(int button, int state) {
 }
 
 void RootContainer::render() {
-    for (vector<Component*>::iterator it = container.begin(); it != container.end(); ++it) {
+    for (vector<Panel*>::iterator it = container.begin(); it != container.end(); ++it) {
         (*it)->render(&graphics);
     }
 }

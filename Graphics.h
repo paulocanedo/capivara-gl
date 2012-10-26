@@ -48,13 +48,16 @@ public:
 
     void setLineWidth(float lineWidth);
     float getLineWidth();
-
+    
+    void setOffset(int x, int y);
+    
     void setFont(FTFont *font);
     FTFont* getFont();
 private:
     vec4 color;
     FTFont *font;
     float lineWidth;
+    vec2 offset;
 };
 
 #endif	/* GRAPHICS_H */

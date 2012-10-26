@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>Action.h</itemPath>
       <itemPath>Button.h</itemPath>
+      <itemPath>CheckBoxButton.h</itemPath>
       <itemPath>Component.h</itemPath>
       <itemPath>FontManager.h</itemPath>
       <itemPath>Graphics.h</itemPath>
@@ -28,7 +29,6 @@
       <itemPath>Action.cpp</itemPath>
       <itemPath>Button.cpp</itemPath>
       <itemPath>CheckBoxButton.cpp</itemPath>
-      <itemPath>CheckBoxButton.h</itemPath>
       <itemPath>Component.cpp</itemPath>
       <itemPath>FontManager.cpp</itemPath>
       <itemPath>Graphics.cpp</itemPath>
@@ -44,6 +44,7 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Arquivos de Recurso"
                    projectFiles="true">
+      <itemPath>install_deps.sh</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Arquivos de Teste"
@@ -108,7 +109,6 @@
         <linkerTool>
           <linkerLibItems>
             <linkerOptionItem>-lGL</linkerOptionItem>
-            <linkerOptionItem>-lGLEW</linkerOptionItem>
             <linkerOptionItem>-lglfw</linkerOptionItem>
             <linkerOptionItem>`pkg-config --libs freetype2`</linkerOptionItem>
             <linkerOptionItem>`pkg-config --libs ftgl`</linkerOptionItem>

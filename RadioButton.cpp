@@ -102,7 +102,7 @@ void RadioButton::paintButtonIcon(Graphics *graphics, bool selected, bool presse
     int space = diameter * 0.25;
     int gap = space * 2;
     int cy = y + (maxDiameter - diameter) / 2;
-    
+
     if (selected || pressed) {
         graphics->setColor(pcglBootstrapBlue);
         graphics->fillOval(x + gap, cy, diameter, diameter);
@@ -114,12 +114,6 @@ void RadioButton::paintButtonIcon(Graphics *graphics, bool selected, bool presse
     }
     graphics->setColor(hover || selected ? pcglBlack : pcglGray);
 
-//    int count = (int) round(radius / 10.0);
-//    for (int i = 1; i <= count; i++) {
-//        graphics->drawOval(x + gap - i, cy - i, radius + i * 2, radius + i * 2);
-//    }
-//    float oldLineWidth = graphics->getLineWidth();
-//    graphics->setLineWidth(max(1.0, radius / 10.0));
     graphics->drawOval(x + gap, cy, diameter, diameter);
 }
 
@@ -130,9 +124,8 @@ void RadioButton::render(Graphics* graphics) {
     int w = getDimension().w;
     int h = getDimension().h;
 
-        paintBackground(graphics);
+//    paintBackground(graphics);
 
     paintButtonIcon(graphics, isSelected(), isStatePressed(), isStateHover(), x, y, min(w, h));
-//    graphics->setLineWidth(oldLineWidth);
     label->render(graphics);
 }

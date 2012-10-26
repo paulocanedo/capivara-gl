@@ -17,6 +17,8 @@ public:
     CheckBoxButton(const CheckBoxButton& orig);
     virtual ~CheckBoxButton();
     
+    virtual string getComponentName();
+    
     virtual void paintButtonIcon(Graphics *graphics, bool selected, bool pressed, bool hover, int x, int cy, int radius);
 //    virtual void render(Graphics* graphics);
 private:
