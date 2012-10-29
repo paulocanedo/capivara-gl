@@ -8,19 +8,19 @@
 #ifndef FONTMANAGER_H
 #define	FONTMANAGER_H
 
-#include <FTGL/ftgl.h>
+#include "Font.h"
 
 class FontManager {
 public:
     virtual ~FontManager();
     
     static FontManager& instance();
-    FTFont* getFont();
+    Font* getFont();
 private:
     FontManager();
     FontManager(const FontManager& orig);
     
-    FTFont* dfont;
+    Font font;
 };
 
 #endif	/* FONTMANAGER_H */

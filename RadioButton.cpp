@@ -74,7 +74,7 @@ string RadioButton::getText() {
 
 void RadioButton::setText(string text) {
     label->setText(text);
-    int radius = label->getFont()->LineHeight() * 0.7;
+    int radius = label->getFont()->lineHeight() * 0.7;
 
     label->setLocation(radius * 2, 0);
 
@@ -88,7 +88,7 @@ void RadioButton::actionExecuted() {
 }
 
 vec2 RadioButton::getCalculatedDimension() {
-    int radius = label->getFont()->LineHeight() * 0.7;
+    int radius = label->getFont()->lineHeight() * 0.7;
     int gap = radius / 2;
 
     vec2 dimension;

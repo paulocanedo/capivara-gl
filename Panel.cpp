@@ -6,8 +6,6 @@
  */
 
 #include "Panel.h"
-#include <iostream>
-#include <typeinfo>
 
 Panel::Panel() {
     backgroundColor = pcglCLightGray;

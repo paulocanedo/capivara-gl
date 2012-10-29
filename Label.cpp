@@ -6,6 +6,7 @@
  */
 
 #include "Label.h"
+#include <iostream>
 
 Label::Label() {
     this->foregroundColor = pcglDarkGray;
@@ -45,11 +46,11 @@ int Label::numberOfLines() {
     return i;
 }
 
-void Label::setFont(FTFont *font) {
+void Label::setFont(Font *font) {
     this->font = font;
 }
 
-FTFont* Label::getFont() {
+Font* Label::getFont() {
     return this->font;
 }
 
@@ -100,8 +101,9 @@ vec2 Label::getCalculatedDimension() {
     while (!st->isFinished()) {
         string s = st->nextElement('\n');
 
-        float w = font->Advance(s.c_str());
-        float h = font->LineHeight();
+        float w = font->advance(s.c_str());
+        float h = font->lineHeight();
+        
         width = max(width, w);
         height += h;
         if (image) {
@@ -122,7 +124,7 @@ vec2 Label::getCalculatedDimension() {
 void Label::render(Graphics* graphics) {
     paintBackground(graphics);
 
-    float hs = graphics->getFont()->LineHeight();
+    float hs = graphics->getFont()->lineHeight();
     int nLines = numberOfLines();
 
     vec2 location = getLocation();
@@ -146,7 +148,7 @@ void Label::render(Graphics* graphics) {
     while (!st->isFinished()) {
         currentLine++;
         string s = st->nextElement('\n');
-        float ws = font->Advance(s.c_str());
+        float ws = font->advance(s.c_str());
 
         int px = 0, py = 0;
         if (align == Component::ComponentAlign::TopCenter ||
@@ -179,11 +181,11 @@ void Label::render(Graphics* graphics) {
             graphics->drawImage(x, y, image);
 
         graphics->setColor(this->foregroundColor);
-        graphics->drawString(x + px, y + py + font->Descender(), s);
+        graphics->drawString(x + px, y + py + font->descender(), s);
 
         if (underlined) {
             graphics->setColor(pcglBlack);
-            int ly = y + py + font->LineHeight();
+            int ly = y + py + font->lineHeight();
             graphics->drawLine(x + px, ly, x + px + getCalculatedDimension().w, ly);
         }
     }

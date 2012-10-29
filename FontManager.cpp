@@ -9,19 +9,21 @@
 
 FontManager& FontManager::instance() {
     static FontManager fm;
+    
     return fm;
 }
 
-FTFont* FontManager::getFont() {
-    return this->dfont;
+Font* FontManager::getFont() {
+    return &font;
 }
 
 FontManager::FontManager() {
-    this->dfont = new FTGLTextureFont("/usr/share/fonts/truetype/ubuntu-font-family/Ubuntu-R.ttf");
-    this->dfont->FaceSize(16);
+//    font = new Font();
+    font.setSize(16);
 }
 
 FontManager::FontManager(const FontManager& orig) {
+//    delete font;
 }
 
 FontManager::~FontManager() {

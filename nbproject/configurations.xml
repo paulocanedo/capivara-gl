@@ -8,11 +8,13 @@
       <itemPath>Button.h</itemPath>
       <itemPath>CheckBoxButton.h</itemPath>
       <itemPath>Component.h</itemPath>
+      <itemPath>Font.h</itemPath>
       <itemPath>FontManager.h</itemPath>
       <itemPath>Graphics.h</itemPath>
       <itemPath>GroupButtonControl.h</itemPath>
       <itemPath>Image.h</itemPath>
       <itemPath>Label.h</itemPath>
+      <itemPath>Layout.h</itemPath>
       <itemPath>Panel.h</itemPath>
       <itemPath>RadioButton.h</itemPath>
       <itemPath>RootContainer.h</itemPath>
@@ -30,6 +32,7 @@
       <itemPath>Button.cpp</itemPath>
       <itemPath>CheckBoxButton.cpp</itemPath>
       <itemPath>Component.cpp</itemPath>
+      <itemPath>Font.cpp</itemPath>
       <itemPath>FontManager.cpp</itemPath>
       <itemPath>Graphics.cpp</itemPath>
       <itemPath>GroupButtonControl.cpp</itemPath>

@@ -17,7 +17,6 @@
 
 #include <string>
 #include <GL/glfw.h>
-#include <FTGL/ftgl.h>
 
 using namespace std;
 
@@ -51,11 +50,11 @@ public:
     
     void setOffset(int x, int y);
     
-    void setFont(FTFont *font);
-    FTFont* getFont();
+    void setFont(Font *font);
+    Font* getFont();
 private:
     vec4 color;
-    FTFont *font;
+    Font *font;
     float lineWidth;
     vec2 offset;
 };

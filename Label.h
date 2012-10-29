@@ -20,7 +20,7 @@ class Label : public Component {
 private:
     string text;
     vec4 foregroundColor;
-    FTFont *font;
+    Font *font;
     Image* image;
     ComponentAlign align;
 public:
@@ -32,8 +32,8 @@ public:
     
     int numberOfLines();
 
-    void setFont(FTFont *font);
-    FTFont* getFont();
+    void setFont(Font *font);
+    Font* getFont();
     vec4 getForegroundColor();
     void setForegroundColor(vec4 color);
     string getText();

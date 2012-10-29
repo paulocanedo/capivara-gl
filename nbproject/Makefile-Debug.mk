@@ -48,6 +48,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/RootContainer.o \
 	${OBJECTDIR}/FontManager.o \
 	${OBJECTDIR}/Graphics.o \
+	${OBJECTDIR}/Font.o \
 	${OBJECTDIR}/Image.o
 
 
@@ -139,6 +140,11 @@ ${OBJECTDIR}/Graphics.o: Graphics.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/Graphics.o Graphics.cpp
+
+${OBJECTDIR}/Font.o: Font.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/Font.o Font.cpp
 
 ${OBJECTDIR}/Image.o: Image.cpp 
 	${MKDIR} -p ${OBJECTDIR}
