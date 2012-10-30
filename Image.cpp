@@ -6,6 +6,7 @@
  */
 
 #include "Image.h"
+#include <iostream>
 
 #define TEXTURE_LOAD_ERROR 0
 
@@ -51,6 +52,7 @@ Image* Image::loadImage(const char* filename) {
     //open file as binary
     FILE *fp = fopen(filename, "rb");
     if (!fp) {
+        std::cerr << "image \"" << filename << "\" not found." << std::endl;
         throw TEXTURE_LOAD_ERROR;
     }
 
@@ -61,6 +63,7 @@ Image* Image::loadImage(const char* filename) {
     int is_png = !png_sig_cmp(header, 0, 8);
     if (!is_png) {
         fclose(fp);
+        std::cerr << "image \"" << filename << "\" is not a png type." << std::endl;
         throw TEXTURE_LOAD_ERROR;
     }
 

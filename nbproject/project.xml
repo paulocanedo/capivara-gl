@@ -12,11 +12,27 @@
             <sourceRootList/>
             <confList>
                 <confElem>
-                    <name>Debug</name>
+                    <name>ubuntu-64-Debug</name>
                     <type>1</type>
                 </confElem>
                 <confElem>
-                    <name>Release</name>
+                    <name>ubuntu-64-Release</name>
+                    <type>1</type>
+                </confElem>
+                <confElem>
+                    <name>osx-64-Debug</name>
+                    <type>1</type>
+                </confElem>
+                <confElem>
+                    <name>osx-64-Release</name>
+                    <type>1</type>
+                </confElem>
+                <confElem>
+                    <name>windows-64-Debug</name>
+                    <type>1</type>
+                </confElem>
+                <confElem>
+                    <name>windows-64-Release</name>
                     <type>1</type>
                 </confElem>
             </confList>

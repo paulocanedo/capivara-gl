@@ -100,12 +100,12 @@ void initComponents() {
     label1->setLocation(20, 0);
     label2->setLocation(20, 690);
     label1->setText("0");
-//    label2->setAutoDimension(false);
+    //    label2->setAutoDimension(false);
     label2->setDimension(400, 200);
     label2->setAlign(Label::MiddleCenter);
     label2->setText(ss.str());
 
-    image = Image::loadImage("/home/paulocanedo/Pictures/netbeans.png");
+    //    image = Image::loadImage("/home/paulocanedo/Pictures/netbeans.png");
     //    label1->setImage(image);
     //    label1->setDimension(200, 200);
     //    label1->setAlign(Component::ComponentAlign::TopCenter);
@@ -118,8 +118,8 @@ void initComponents() {
     int gap = 2;
 
     button->setLocation(20, 30);
-//    button->setAutoDimension(false);
-//    button->setDimension(300, 80);
+    //    button->setAutoDimension(false);
+    //    button->setDimension(300, 80);
     CustomAction *caction = new CustomAction();
     button->setAction(caction);
     button->setText("Button 1");
@@ -192,7 +192,7 @@ void deleteComponents() {
     delete panel;
     delete button;
     delete caction;
-    delete image;
+    //    delete image;
     delete ipanel1;
 }
 
@@ -206,7 +206,7 @@ int main(int argc, char** argv) {
         exit(EXIT_FAILURE);
     }
 
-    glfwOpenWindowHint(GLFW_FSAA_SAMPLES, 4); // 4x antialiasing
+    glfwOpenWindowHint(GLFW_FSAA_SAMPLES, 4);
     //    glfwOpenWindowHint(GLFW_OPENGL_VERSION_MAJOR, 3);
     //    glfwOpenWindowHint(GLFW_OPENGL_VERSION_MINOR, 1);
     //        glfwOpenWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); //We don't want the old OpenGL

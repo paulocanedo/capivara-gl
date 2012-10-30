@@ -23,7 +23,7 @@ AS=as
 # Macros
 CND_PLATFORM=GNU-Linux-x86
 CND_DLIB_EXT=so
-CND_CONF=Debug
+CND_CONF=windows-64-Release
 CND_DISTDIR=dist
 CND_BUILDDIR=build
 
@@ -66,7 +66,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-lGL -lglfw `pkg-config --libs freetype2` `pkg-config --libs ftgl` -lpng  
+LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -79,77 +79,77 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/capivara-gl: ${OBJECTFILES}
 ${OBJECTDIR}/Action.o: Action.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/Action.o Action.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Action.o Action.cpp
 
 ${OBJECTDIR}/StringTokenizer.o: StringTokenizer.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/StringTokenizer.o StringTokenizer.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/StringTokenizer.o StringTokenizer.cpp
 
 ${OBJECTDIR}/Panel.o: Panel.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/Panel.o Panel.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Panel.o Panel.cpp
 
 ${OBJECTDIR}/CheckBoxButton.o: CheckBoxButton.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/CheckBoxButton.o CheckBoxButton.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/CheckBoxButton.o CheckBoxButton.cpp
 
 ${OBJECTDIR}/Label.o: Label.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/Label.o Label.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Label.o Label.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/Component.o: Component.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/Component.o Component.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Component.o Component.cpp
 
 ${OBJECTDIR}/Button.o: Button.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/Button.o Button.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Button.o Button.cpp
 
 ${OBJECTDIR}/RadioButton.o: RadioButton.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/RadioButton.o RadioButton.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/RadioButton.o RadioButton.cpp
 
 ${OBJECTDIR}/GroupButtonControl.o: GroupButtonControl.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/GroupButtonControl.o GroupButtonControl.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/GroupButtonControl.o GroupButtonControl.cpp
 
 ${OBJECTDIR}/RootContainer.o: RootContainer.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/RootContainer.o RootContainer.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/RootContainer.o RootContainer.cpp
 
 ${OBJECTDIR}/FontManager.o: FontManager.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/FontManager.o FontManager.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/FontManager.o FontManager.cpp
 
 ${OBJECTDIR}/Graphics.o: Graphics.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/Graphics.o Graphics.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Graphics.o Graphics.cpp
 
 ${OBJECTDIR}/Font.o: Font.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/Font.o Font.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Font.o Font.cpp
 
 ${OBJECTDIR}/Image.o: Image.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags freetype2` `pkg-config --cflags ftgl` -std=c++11   -MMD -MP -MF $@.d -o ${OBJECTDIR}/Image.o Image.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Image.o Image.cpp
 
 # Subprojects
 .build-subprojects:

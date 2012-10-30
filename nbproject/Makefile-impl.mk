@@ -27,11 +27,11 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 PROJECTNAME=capivara-gl
 
 # Active Configuration
-DEFAULTCONF=Debug
+DEFAULTCONF=ubuntu-64-Debug
 CONF=${DEFAULTCONF}
 
 # All Configurations
-ALLCONFS=Debug Release 
+ALLCONFS=ubuntu-64-Debug ubuntu-64-Release osx-64-Debug osx-64-Release windows-64-Debug windows-64-Release 
 
 
 # build
